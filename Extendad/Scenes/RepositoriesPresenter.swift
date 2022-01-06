@@ -12,6 +12,7 @@ class RepositoriesPresenter: BasePresenter {
     private var repositoriesUseCase: RepositoriesUseCase!
     private weak var view: BaseViewProtocol?
     var repoistories = [RepositoryModel]()
+    var searchRepoistories = [RepositoryModel]()
     
     
     override func attachView(view: BaseViewProtocol) {
@@ -39,6 +40,7 @@ class RepositoriesPresenter: BasePresenter {
                 
                 
                 self?.repoistories = response
+                self?.searchRepoistories = response
                 
                 self?.view?.reloadView()
                 
@@ -61,8 +63,15 @@ class RepositoriesPresenter: BasePresenter {
         return repoistories[index]
     }
     
-    func Search(keyword: String){
-        
+    func search(keyword: String){
+        if keyword.count > 1 {
+            self.repoistories = searchRepoistories.filter({$0.owner?.login?.lowercased().contains(keyword.lowercased()) ?? false})
+            self.view?.reloadView()
+        }else if keyword.count == 0{
+            self.repoistories = searchRepoistories
+            self.view?.reloadView()
+        }
+      
     }
     
     

@@ -11,6 +11,7 @@ class RepositoriesVC: UIViewController {
     
     //    MARK:- Outlet
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     
@@ -112,3 +113,10 @@ extension RepositoriesVC: BaseViewProtocol {
 
 
 
+
+extension RepositoriesVC: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.presenter.search(keyword: searchText)
+    }
+    
+}
