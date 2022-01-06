@@ -8,8 +8,8 @@
 import Foundation
 
 enum ServiceBase: String {
-    case base = "http://api.tvmaze.com/"
-    case home = "search/shows?q=Future"
+    case base = "https://api.github.com/"
+    case repositories = "repositories"
  
 
 
