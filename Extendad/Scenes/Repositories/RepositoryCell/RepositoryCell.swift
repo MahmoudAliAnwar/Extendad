@@ -21,10 +21,11 @@ class RepositoryCell: UITableViewCell {
         repositoryImageView.layer.cornerRadius = 5
         repositoryImageView.clipsToBounds = true
     }
-    func confige(repository: RepositoryModel){
+    func confige(repository: RepositoryEntity){
         self.repositoryNameLabel.text = repository.name
-        self.repositoryOwnerNameLabel.text = repository.owner?.login
-        self.repositoryImageView.addImageFromURL(urlString: repository.owner?.avatarURL ?? "")
+        self.repositoryOwnerNameLabel.text = repository.ownerName
+        self.repositoryDateLabel.text = "2020-02-06 14:54:00+0200".determine
+        self.repositoryImageView.addImageFromURL(urlString: repository.image)
     
         
     }

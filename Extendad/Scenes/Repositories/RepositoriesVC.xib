@@ -20,6 +20,15 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1IT-lP-QW9">
+                    <rect key="frame" x="0.0" y="105" width="414" height="757"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="qDp-Iq-pj2"/>
+                        <outlet property="delegate" destination="-1" id="a82-Wa-fWI"/>
+                        <outlet property="prefetchDataSource" destination="-1" id="rSN-cF-Lx1"/>
+                    </connections>
+                </tableView>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="JFE-Wd-ZeO">
                     <rect key="frame" x="0.0" y="44" width="414" height="51"/>
                     <textInputTraits key="textInputTraits"/>
@@ -27,27 +36,19 @@
                         <outlet property="delegate" destination="-1" id="EOg-lR-ElJ"/>
                     </connections>
                 </searchBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1IT-lP-QW9">
-                    <rect key="frame" x="0.0" y="95" width="414" height="767"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="qDp-Iq-pj2"/>
-                        <outlet property="delegate" destination="-1" id="a82-Wa-fWI"/>
-                    </connections>
-                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="1IT-lP-QW9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="F8q-aV-SVZ"/>
+                <constraint firstItem="1IT-lP-QW9" firstAttribute="top" secondItem="JFE-Wd-ZeO" secondAttribute="bottom" constant="10" id="CXJ-WS-l7m"/>
                 <constraint firstItem="JFE-Wd-ZeO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Lbs-IH-ZNu"/>
                 <constraint firstItem="JFE-Wd-ZeO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Py2-QD-J9X"/>
-                <constraint firstItem="1IT-lP-QW9" firstAttribute="top" secondItem="JFE-Wd-ZeO" secondAttribute="bottom" id="hxC-N8-BgY"/>
+                <constraint firstItem="1IT-lP-QW9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gTH-6n-YVS"/>
+                <constraint firstItem="1IT-lP-QW9" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="gv9-yh-ISJ"/>
                 <constraint firstAttribute="trailing" secondItem="JFE-Wd-ZeO" secondAttribute="trailing" id="iip-d0-Do7"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1IT-lP-QW9" secondAttribute="trailing" id="mEX-Tg-kUA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1IT-lP-QW9" secondAttribute="bottom" id="xVP-JX-kYJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1IT-lP-QW9" secondAttribute="bottom" id="njl-L7-qFw"/>
             </constraints>
-            <point key="canvasLocation" x="112" y="104"/>
+            <point key="canvasLocation" x="111.59420289855073" y="103.79464285714285"/>
         </view>
     </objects>
     <resources>

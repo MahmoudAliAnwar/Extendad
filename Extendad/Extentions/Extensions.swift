@@ -94,5 +94,93 @@ extension String{
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
     }
+    var determine : String{
+        let dateNow = convert(date: NSDate(timeIntervalSince1970: TimeInterval(Int(TimeInterval(NSDate().timeIntervalSince1970)))) as Date)
+        
+        var now = getTime(date: dateNow)
+        let date = getTime(date: self)
+        let year = now.1 - date.1
+        var month = now.0 - date.0
+        now.0 += month < 0 ? 12: 0
+        month = now.0 - date.0
 
+         if year > 1{
+            if month == 0 {
+                return "\(year) year ago"
+            }else {
+            return "\(month) month ago, \(year - 1) year ago"
+            }
+         }else if month > 6 {
+            return "\(month) month ago"
+         }else if month < 6 && year == 1{
+            if month == 0 {
+                return "\(year) year ago"
+            }else {
+                return getTimeOfDay(date: self)
+            }
+         }
+         else{
+       return getTimeOfDay(date: self)
+        }
+    }
+
+    func getTimeOfDay(date: String) -> String {
+        let dateFormatter = DateFormatter()
+       
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+  
+
+        
+        let newDate = dateFormatter.date(from:date)
+
+       
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+        let date = dateFormatter.string(from: newDate!)
+       
+        return date
+    }
+    
+    func getTime(date: String) -> (Int, Int) {
+        let dateFormatter = DateFormatter()
+       
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+  
+
+        
+        let newDate = dateFormatter.date(from:date)
+
+        dateFormatter.dateFormat = "MM"
+        
+   
+        let month = dateFormatter.string(from: newDate!)
+        dateFormatter.dateFormat = "yyyy"
+        let year = dateFormatter.string(from: newDate!)
+       
+        return (Int(month) ?? 0, Int(year) ?? 0)
+    }
+
+
+       
+    func convert(date: Date) -> String {
+        //         let string = date
+
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+        //              let date = dateFormatter.date(from: string)!
+//        dateFormatter.dateFormat = "dd_MM_yyyy"
+
+        let dateString = dateFormatter.string(from: date)
+
+        return dateString
+    }
 }
+
+extension Date{
+   
+  
+}
+
+
+

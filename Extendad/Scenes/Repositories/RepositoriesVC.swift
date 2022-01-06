@@ -27,6 +27,7 @@ class RepositoriesVC: UIViewController {
         self.presenter.attachView(view: self)
         registerCells()
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +46,9 @@ class RepositoriesVC: UIViewController {
     
 }
 
-extension RepositoriesVC: UITableViewDelegate, UITableViewDataSource  {
+extension RepositoriesVC: UITableViewDelegate, UITableViewDataSource {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.presenter.numberOfRepositories()
         
@@ -63,18 +66,19 @@ extension RepositoriesVC: UITableViewDelegate, UITableViewDataSource  {
             return UIScreen.main.bounds.height / 9
         }
     }
-    //        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //            self.navigationController?.pushViewController(MovieDetailsVC(movie: self.presenter.object(index: indexPath.row)), animated: true)
-    //    //        self.navigationController?.pushViewController(ShopeDetailsVC(presenter: ShopeDeatilsPresenter(shopID: self.presenter.shope[indexPath.row].id ?? "" )), animated: true)
-    //        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(RepositoryDetailsVC(repository: self.presenter.objectOfRepositoies(index: indexPath.row)), animated: true)
+        
+    }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //         indexPath.row == (self.presenter.shope.count - 1) ? self.presenter.didReachLastIndex() : nil
-        //        self.presenter.didReachLastIndex()
+        indexPath.row == (self.presenter.repoistories.count - 1) ? self.presenter.didReachLastIndex() : nil
+        //                self.presenter.didReachLastIndex()
         cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         UIView.animate(withDuration: 0.4) {
             cell.transform = CGAffineTransform.identity
         }
     }
+    
     
     
 }
